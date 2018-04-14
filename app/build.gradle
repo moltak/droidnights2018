@@ -48,6 +48,8 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
     implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.intuit.sdp:sdp-android:1.0.5'
+    implementation 'com.intuit.ssp:ssp-android:1.0.5'
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.8.0'
