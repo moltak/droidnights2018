@@ -5,7 +5,7 @@
   <application
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name"
+    android:label="MainActivity"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
@@ -16,6 +16,12 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <activity android:name=".step1.Step1Activity" android:label="Step1" />
+    <activity android:name=".step2.Step2Activity" android:label="Step2" />
+    <activity android:name=".step3.Step3Activity" android:label="Step3" />
+    <activity android:name=".step4.Step4Activity" android:label="Step4" />
+    <activity android:name=".step5.Step5Activity" android:label="Step5" />
   </application>
 
 </manifest>

@@ -1,144 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
+  android:orientation="vertical" android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:orientation="vertical">
+  android:padding="@dimen/_8sdp">
 
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="3"
-    android:orientation="vertical"
-    android:padding="@dimen/_8sdp">
-    <EditText
-      android:id="@+id/activity_main_edit_text"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:textSize="@dimen/_40ssp"
-      android:background="@android:color/white"
-      android:gravity="start" />
-  </LinearLayout>
-
-  <LinearLayout
+  <Button
+    android:id="@+id/activity_main_step_1"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1"
-    android:orientation="horizontal"
-    android:paddingBottom="@dimen/_4sdp">
-    <Button
-      android:id="@+id/activity_main_button_7"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="7"/>
-    <Button
-      android:id="@+id/activity_main_button_8"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="8"/>
-    <Button
-      android:id="@+id/activity_main_button_9"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="9"/>
-    <Button
-      android:id="@+id/activity_main_button_multiply"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="X" />
-  </LinearLayout>
+    android:text="Step 1"/>
 
-  <LinearLayout
+  <Button
+    android:id="@+id/activity_main_step_2"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1"
-    android:orientation="horizontal"
-    android:paddingBottom="@dimen/_4sdp">
-    <Button
-      android:id="@+id/activity_main_button_4"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="4"/>
-    <Button
-      android:id="@+id/activity_main_button_5"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="5"/>
-    <Button
-      android:id="@+id/activity_main_button_6"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="6"/>
-    <Button
-      android:id="@+id/activity_main_button_divide"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="/" />
-  </LinearLayout>
+    android:text="Step 2"/>
 
-  <LinearLayout
+  <Button
+    android:id="@+id/activity_main_step_3"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1"
-    android:orientation="horizontal"
-    android:paddingBottom="@dimen/_4sdp">
-    <Button
-      android:id="@+id/activity_main_button_1"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="1"/>
-    <Button
-      android:id="@+id/activity_main_button_2"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="2"/>
-    <Button
-      android:id="@+id/activity_main_button_3"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="3"/>
-    <Button
-      android:id="@+id/activity_main_button_minus"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="-" />
-  </LinearLayout>
+    android:text="Step 3"/>
 
-  <LinearLayout
+  <Button
+    android:id="@+id/activity_main_step_4"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1"
-    android:orientation="horizontal"
-    android:paddingBottom="@dimen/_4sdp">
-    <Button
-      android:id="@+id/activity_main_button_0"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="2"
-      android:text="0"/>
-    <Button
-      android:id="@+id/activity_main_button_result"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="="/>
-    <Button
-      android:id="@+id/activity_main_button_plus"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:text="+" />
-  </LinearLayout>
+    android:text="Step 4"/>
+
+  <Button
+    android:id="@+id/activity_main_step_5"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:text="Step 5"/>
 
 </LinearLayout>
