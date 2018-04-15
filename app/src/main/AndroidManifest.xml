@@ -23,9 +23,9 @@
     <activity android:name=".step1.Step1Activity" android:label="Step1" />
     <activity android:name=".step2.Step2Activity" android:label="Step2" />
     <activity android:name=".step3.Step3Activity" android:label="Step3" />
-    <activity android:name=".step4.Step4Activity" android:label="Step3" />
-    <activity android:name=".step5.Step5Activity" android:label="Step5" />
-    <activity android:name=".step6.Step6Activity" android:label="Step6" />
+    <activity android:name=".step4.Step4Activity" android:label="Step4 sleep" />
+    <activity android:name=".step5.Step5Activity" android:label="Step5 latch" />
+    <activity android:name=".step6.Step6Activity" android:label="Step6 dagger" />
     <activity android:name=".extra.ExtraActivity" android:label="Extra" />
   </application>
 
