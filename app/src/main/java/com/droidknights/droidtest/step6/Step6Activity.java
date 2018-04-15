@@ -1,4 +1,4 @@
-package com.droidknights.droidtest.step5;
+package com.droidknights.droidtest.step6;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,14 +9,16 @@ import com.droidknights.droidtest.CalculatorApplication;
 import com.droidknights.droidtest.R;
 import com.jakewharton.rxrelay2.Relay;
 
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import retrofit2.Response;
 
-public class Step5Activity extends AppCompatActivity {
+public class Step6Activity extends AppCompatActivity {
     private TextView editText;
 
-    private Step5Calculator calculator = new Step5CalculatorImpl();
+    @Inject Step6Calculator calculator;
 
     private Relay<Response<String>> httpChannel;
 
@@ -48,6 +50,8 @@ public class Step5Activity extends AppCompatActivity {
 
         findViewById(R.id.calculator_button_result).setOnClickListener(button -> calculate());
 
+        ((CalculatorApplication) getApplication()).getStep6Component().inject(this);
+
         httpChannel = ((CalculatorApplication) getApplication()).getHttpChannel();
 
         disposable.add(
@@ -58,7 +62,7 @@ public class Step5Activity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        disposable.dispose();
+        disposable.clear();
 
         super.onDestroy();
     }

@@ -1,4 +1,4 @@
-package com.droidknights.droidtest.step4
+package com.droidknights.droidtest.extra
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -10,7 +10,7 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_calculator.*
 
-class Step4Activity : AppCompatActivity() {
+class ExtraActivity : AppCompatActivity() {
 
     private val disposable = CompositeDisposable()
     private val input: Relay<String> = PublishRelay.create()

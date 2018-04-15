@@ -1,26 +1,19 @@
-package com.droidknights.droidtest.step5;
+package com.droidknights.droidtest.step4;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
-import com.droidknights.droidtest.CalculatorApplication;
 import com.droidknights.droidtest.R;
-import com.jakewharton.rxrelay2.Relay;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import retrofit2.Response;
 
-public class Step5Activity extends AppCompatActivity {
+public class Step4Activity extends AppCompatActivity {
     private TextView editText;
 
-    private Step5Calculator calculator = new Step5CalculatorImpl();
-
-    private Relay<Response<String>> httpChannel;
-
-    private CompositeDisposable disposable = new CompositeDisposable();
+    private Step4Calculator calculator = new Step4CalculatorImpl();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,20 +40,6 @@ public class Step5Activity extends AppCompatActivity {
         findViewById(R.id.calculator_button_divide).setOnClickListener(button   -> setText("/"));
 
         findViewById(R.id.calculator_button_result).setOnClickListener(button -> calculate());
-
-        httpChannel = ((CalculatorApplication) getApplication()).getHttpChannel();
-
-        disposable.add(
-                httpChannel.observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(result -> editText.setText(result.body()), Throwable::printStackTrace)
-        );
-    }
-
-    @Override
-    protected void onDestroy() {
-        disposable.dispose();
-
-        super.onDestroy();
     }
 
     private void setText(String number) {
@@ -71,6 +50,7 @@ public class Step5Activity extends AppCompatActivity {
         String expression = editText.getText().toString();
 
         calculator.calculate(expression)
-                .subscribe(result -> httpChannel.accept(result), Throwable::printStackTrace);
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(result -> editText.setText(result.body()), Throwable::printStackTrace);
     }
 }

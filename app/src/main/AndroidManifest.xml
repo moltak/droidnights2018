@@ -2,13 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.droidknights.droidtest">
 
+  <uses-permission android:name="android.permission.INTERNET" />
+
   <application
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
-    android:label="MainActivity"
+    android:label="@string/app_name"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
-    android:theme="@style/AppTheme">
+    android:theme="@style/AppTheme"
+    android:name=".CalculatorApplication">
     <activity android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -20,8 +23,10 @@
     <activity android:name=".step1.Step1Activity" android:label="Step1" />
     <activity android:name=".step2.Step2Activity" android:label="Step2" />
     <activity android:name=".step3.Step3Activity" android:label="Step3" />
-    <activity android:name=".step4.Step4Activity" android:label="Step4" />
+    <activity android:name=".step4.Step4Activity" android:label="Step3" />
     <activity android:name=".step5.Step5Activity" android:label="Step5" />
+    <activity android:name=".step6.Step6Activity" android:label="Step6" />
+    <activity android:name=".extra.ExtraActivity" android:label="Extra" />
   </application>
 
 </manifest>
