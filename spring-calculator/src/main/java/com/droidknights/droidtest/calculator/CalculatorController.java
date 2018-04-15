@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.*;
 public class CalculatorController {
     private final Step3Calculator calculator = new Step3GeneralCalculator();
 
-    @RequestMapping(value="/calculate/{expression}", method = RequestMethod.GET)
+    @RequestMapping(value="/calculate", method = RequestMethod.GET)
     @ResponseBody
-    public String calculate(@PathVariable("expression") String expression) {
+    public String calculate(@RequestParam("expression") String expression) {
         return calculator.calculate(expression);
     }
 }
