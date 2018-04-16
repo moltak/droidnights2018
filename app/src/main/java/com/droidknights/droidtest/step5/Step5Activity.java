@@ -5,22 +5,18 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.droidknights.droidtest.CalculatorApplication;
 import com.droidknights.droidtest.R;
-import com.jakewharton.rxrelay2.Relay;
+import com.droidknights.droidtest.ViewModel;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import retrofit2.Response;
 
 public class Step5Activity extends AppCompatActivity {
     private TextView editText;
 
-    private Step5Calculator calculator = new Step5CalculatorImpl();
-
-    private Relay<Response<String>> httpChannel;
-
     private CompositeDisposable disposable = new CompositeDisposable();
+
+    private ViewModel viewModel = new Step5ViewModel();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,10 +44,8 @@ public class Step5Activity extends AppCompatActivity {
 
         findViewById(R.id.calculator_button_result).setOnClickListener(button -> calculate());
 
-        httpChannel = ((CalculatorApplication) getApplication()).getHttpChannel();
-
         disposable.add(
-                httpChannel.observeOn(AndroidSchedulers.mainThread())
+                ((Step5ViewModel)viewModel).getHttpChannel().observeOn(AndroidSchedulers.mainThread())
                         .subscribe(result -> editText.setText(result.body()), Throwable::printStackTrace)
         );
     }
@@ -70,7 +64,10 @@ public class Step5Activity extends AppCompatActivity {
     private void calculate() {
         String expression = editText.getText().toString();
 
-        calculator.calculate(expression)
-                .subscribe(result -> httpChannel.accept(result), Throwable::printStackTrace);
+        viewModel.calculate(expression);
+    }
+
+    public ViewModel getViewModel() {
+        return viewModel;
     }
 }

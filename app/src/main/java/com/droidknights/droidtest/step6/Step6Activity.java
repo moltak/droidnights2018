@@ -5,8 +5,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.droidknights.droidtest.Calculator;
 import com.droidknights.droidtest.CalculatorApplication;
 import com.droidknights.droidtest.R;
+import com.droidknights.droidtest.ViewModel;
 import com.jakewharton.rxrelay2.Relay;
 
 import javax.inject.Inject;
@@ -18,9 +20,11 @@ import retrofit2.Response;
 public class Step6Activity extends AppCompatActivity {
     private TextView editText;
 
-    @Inject Step6Calculator calculator;
+    @Inject Calculator calculator;
 
-    private Relay<Response<String>> httpChannel;
+    @Inject ViewModel viewModel;
+
+    @Inject Relay<Response<String>> httpChannel;
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -52,8 +56,6 @@ public class Step6Activity extends AppCompatActivity {
 
         ((CalculatorApplication) getApplication()).getStep6Component().inject(this);
 
-        httpChannel = ((CalculatorApplication) getApplication()).getHttpChannel();
-
         disposable.add(
                 httpChannel.observeOn(AndroidSchedulers.mainThread())
                         .subscribe(result -> editText.setText(result.body()), Throwable::printStackTrace)
@@ -74,7 +76,6 @@ public class Step6Activity extends AppCompatActivity {
     private void calculate() {
         String expression = editText.getText().toString();
 
-        calculator.calculate(expression)
-                .subscribe(result -> httpChannel.accept(result), Throwable::printStackTrace);
+        viewModel.calculate(expression);
     }
 }

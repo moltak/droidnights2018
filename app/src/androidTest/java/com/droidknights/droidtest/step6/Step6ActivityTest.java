@@ -7,6 +7,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.droidknights.droidtest.CalculatorApplication;
 import com.droidknights.droidtest.R;
+import com.jakewharton.rxrelay2.Relay;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -14,6 +15,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.concurrent.CountDownLatch;
+
+import javax.inject.Inject;
+
+import retrofit2.Response;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -26,16 +31,18 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 public class Step6ActivityTest {
     @Rule public ActivityTestRule<Step6Activity> testRule = new ActivityTestRule(Step6Activity.class, false, false);
 
+    @Inject Relay<Response<String>> httpChannel;
+
     private CountDownLatch latch;
 
-    @Before
-    public void setUp() throws Exception {
+    @Before public void setUp() {
         CalculatorApplication application = (CalculatorApplication) InstrumentationRegistry.getTargetContext().getApplicationContext();
 
         TestStep6Component testComponent = DaggerTestStep6Component.builder()
                 .testStep6Module(new TestStep6Module())
                 .build();
         application.setStep6Component(testComponent);
+        testComponent.inject(this);
 
         latch = new CountDownLatch(1);
     }
@@ -44,10 +51,7 @@ public class Step6ActivityTest {
 
         testRule.launchActivity(null);
 
-        ((CalculatorApplication) testRule.getActivity()
-                .getApplication())
-                .getHttpChannel()
-                .subscribe(
+        httpChannel.subscribe(
                         result -> latch.countDown(),
                         err -> latch.countDown());
 
@@ -68,10 +72,7 @@ public class Step6ActivityTest {
 
         testRule.launchActivity(null);
 
-        ((CalculatorApplication) testRule.getActivity()
-                .getApplication())
-                .getHttpChannel()
-                .subscribe(
+        httpChannel.subscribe(
                         result -> latch.countDown(),
                         err -> latch.countDown());
 
@@ -92,10 +93,7 @@ public class Step6ActivityTest {
 
         testRule.launchActivity(null);
 
-        ((CalculatorApplication) testRule.getActivity()
-                .getApplication())
-                .getHttpChannel()
-                .subscribe(
+        httpChannel.subscribe(
                         result -> latch.countDown(),
                         err -> latch.countDown());
 
@@ -116,10 +114,7 @@ public class Step6ActivityTest {
 
         testRule.launchActivity(null);
 
-        ((CalculatorApplication) testRule.getActivity()
-                .getApplication())
-                .getHttpChannel()
-                .subscribe(
+        httpChannel.subscribe(
                         result -> latch.countDown(),
                         err -> latch.countDown());
 

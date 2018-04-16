@@ -27,14 +27,13 @@ public class Step5ActivityTest {
 
     private CountDownLatch latch;
 
-    @Before public void setUp() throws Exception {
+    @Before public void setUp() {
         latch = new CountDownLatch(1);
     }
 
     @Test public void plusTest() throws InterruptedException {
 
-        ((CalculatorApplication) testRule.getActivity()
-                .getApplication())
+        ((Step5ViewModel) testRule.getActivity().getViewModel())
                 .getHttpChannel()
                 .subscribe(
                         result -> latch.countDown(),
@@ -55,8 +54,7 @@ public class Step5ActivityTest {
 
     @Test public void minusTest() throws InterruptedException {
 
-        ((CalculatorApplication) testRule.getActivity()
-                .getApplication())
+        ((Step5ViewModel) testRule.getActivity().getViewModel())
                 .getHttpChannel()
                 .subscribe(
                         result -> latch.countDown(),
@@ -76,8 +74,8 @@ public class Step5ActivityTest {
     }
 
     @Test public void multiplyTest() throws InterruptedException {
-        ((CalculatorApplication) testRule.getActivity()
-                .getApplication())
+
+        ((Step5ViewModel) testRule.getActivity().getViewModel())
                 .getHttpChannel()
                 .subscribe(
                         result -> latch.countDown(),
@@ -98,8 +96,7 @@ public class Step5ActivityTest {
 
     @Test public void divideTest() throws InterruptedException {
 
-        ((CalculatorApplication) testRule.getActivity()
-                .getApplication())
+        ((Step5ViewModel) testRule.getActivity().getViewModel())
                 .getHttpChannel()
                 .subscribe(
                         result -> latch.countDown(),

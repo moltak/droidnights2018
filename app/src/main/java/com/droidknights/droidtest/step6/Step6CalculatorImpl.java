@@ -1,6 +1,8 @@
 package com.droidknights.droidtest.step6;
 
 import com.droidknights.droidtest.BuildConfig;
+import com.droidknights.droidtest.Calculator;
+import com.droidknights.droidtest.CalculatorService;
 
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
@@ -9,7 +11,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Step6CalculatorImpl implements Step6Calculator {
+public class Step6CalculatorImpl implements Calculator {
     @Override
     public Single<Response<String>> calculate(String expression) {
         Retrofit retrofit = new Retrofit.Builder()

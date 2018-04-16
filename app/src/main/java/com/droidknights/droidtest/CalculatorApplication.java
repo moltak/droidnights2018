@@ -5,16 +5,10 @@ import android.app.Application;
 import com.droidknights.droidtest.step6.DaggerStep6Component;
 import com.droidknights.droidtest.step6.Step6Component;
 import com.droidknights.droidtest.step6.Step6Module;
-import com.jakewharton.rxrelay2.PublishRelay;
-import com.jakewharton.rxrelay2.Relay;
-
-import retrofit2.Response;
 
 public class CalculatorApplication extends Application {
 
     private Step6Component step6Component;
-
-    private Relay<Response<String>> httpChannel = PublishRelay.create();
 
     @Override
     public void onCreate() {
@@ -31,9 +25,5 @@ public class CalculatorApplication extends Application {
 
     public Step6Component getStep6Component() {
         return step6Component;
-    }
-
-    public Relay<Response<String>> getHttpChannel() {
-        return httpChannel;
     }
 }

@@ -3,9 +3,9 @@ package com.droidknights.droidtest.step4;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 
+import com.droidknights.droidtest.Calculator;
 import com.droidknights.droidtest.R;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -13,7 +13,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 public class Step4Activity extends AppCompatActivity {
     private TextView editText;
 
-    private Step4Calculator calculator = new Step4CalculatorImpl();
+    private Calculator calculator = new Step4CalculatorImpl();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

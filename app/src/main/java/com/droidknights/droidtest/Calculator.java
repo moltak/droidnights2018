@@ -1,8 +1,8 @@
-package com.droidknights.droidtest.step6;
+package com.droidknights.droidtest;
 
 import io.reactivex.Single;
 import retrofit2.Response;
 
-public interface Step6Calculator {
+public interface Calculator {
     Single<Response<String>> calculate(String expression);
 }

@@ -1,6 +1,9 @@
 package com.droidknights.droidtest.step6;
 
+import com.droidknights.droidtest.Calculator;
+import com.droidknights.droidtest.ViewModel;
 import com.jakewharton.rxrelay2.PublishRelay;
+import com.jakewharton.rxrelay2.Relay;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,12 +18,12 @@ import retrofit2.Response;
 @Module
 public class TestStep6Module {
     @Provides @Singleton
-    public PublishRelay<String> provideHttpChannel() {
+    public Relay<Response<String>> provideHttpChannel() {
         return PublishRelay.create();
     }
 
     @Provides @Singleton
-    public Step6Calculator provideCalculator() {
+    public Calculator provideCalculator() {
         return expression -> {
             String symbol;
 
@@ -57,5 +60,10 @@ public class TestStep6Module {
 
             return Single.just(Response.success(String.valueOf(result)));
         };
+    }
+
+    @Provides @Singleton
+    public ViewModel provideViewModel(Calculator calculator, Relay<Response<String>> httpChannel) {
+        return new Step6ViewModel(calculator, httpChannel);
     }
 }
