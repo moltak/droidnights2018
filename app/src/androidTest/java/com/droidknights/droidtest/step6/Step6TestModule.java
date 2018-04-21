@@ -16,7 +16,7 @@ import io.reactivex.Single;
 import retrofit2.Response;
 
 @Module
-public class TestStep6Module {
+public class Step6TestModule {
     @Provides @Singleton
     public Relay<Response<String>> provideHttpChannel() {
         return PublishRelay.create();

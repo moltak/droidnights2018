@@ -5,7 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = TestStep6Module.class)
-interface TestStep6Component extends Step6Component {
+@Component(modules = Step6TestModule.class)
+interface Step6TestComponent extends Step6Component {
     void inject(Step6ActivityTest step6ActivityTest);
 }

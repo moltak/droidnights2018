@@ -38,8 +38,8 @@ public class Step6ActivityTest {
     @Before public void setUp() {
         CalculatorApplication application = (CalculatorApplication) InstrumentationRegistry.getTargetContext().getApplicationContext();
 
-        TestStep6Component testComponent = DaggerTestStep6Component.builder()
-                .testStep6Module(new TestStep6Module())
+        Step6TestComponent testComponent = DaggerStep6TestComponent.builder()
+                .testStep6Module(new Step6TestModule())
                 .build();
         application.setStep6Component(testComponent);
         testComponent.inject(this);
