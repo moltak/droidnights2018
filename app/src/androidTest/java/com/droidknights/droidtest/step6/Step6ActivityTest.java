@@ -18,6 +18,7 @@ import java.util.concurrent.CountDownLatch;
 
 import javax.inject.Inject;
 
+import io.reactivex.observers.TestObserver;
 import retrofit2.Response;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -33,27 +34,23 @@ public class Step6ActivityTest {
 
     @Inject Relay<Response<String>> httpChannel;
 
-    private CountDownLatch latch;
-
     @Before public void setUp() {
         CalculatorApplication application = (CalculatorApplication) InstrumentationRegistry.getTargetContext().getApplicationContext();
 
         Step6TestComponent testComponent = DaggerStep6TestComponent.builder()
-                .testStep6Module(new Step6TestModule())
+                .step6TestModule(new Step6TestModule())
                 .build();
         application.setStep6Component(testComponent);
         testComponent.inject(this);
-
-        latch = new CountDownLatch(1);
     }
 
-    @Test public void plusTest() throws InterruptedException {
+    @Test public void plusTest() {
 
         testRule.launchActivity(null);
 
-        httpChannel.subscribe(
-                        result -> latch.countDown(),
-                        err -> latch.countDown());
+        TestObserver<Response<String>> testObserver = TestObserver.create();
+
+        httpChannel.subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_1);
 
@@ -63,18 +60,18 @@ public class Step6ActivityTest {
 
         buttonClick(R.id.calculator_button_result);
 
-        latch.await();
+        testObserver.awaitCount(1);
 
         onView(withId(R.id.calculator_edit_text)).check(matches(withText("2")));
     }
 
-    @Test public void minusTest() throws InterruptedException {
+    @Test public void minusTest() {
 
         testRule.launchActivity(null);
 
-        httpChannel.subscribe(
-                        result -> latch.countDown(),
-                        err -> latch.countDown());
+        TestObserver<Response<String>> testObserver = TestObserver.create();
+
+        httpChannel.subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_1);
 
@@ -84,18 +81,18 @@ public class Step6ActivityTest {
 
         buttonClick(R.id.calculator_button_result);
 
-        latch.await();
+        testObserver.awaitCount(1);
 
         onView(withId(R.id.calculator_edit_text)).check(matches(withText("0")));
     }
 
-    @Test public void multiplyTest() throws InterruptedException {
+    @Test public void multiplyTest() {
 
         testRule.launchActivity(null);
 
-        httpChannel.subscribe(
-                        result -> latch.countDown(),
-                        err -> latch.countDown());
+        TestObserver<Response<String>> testObserver = TestObserver.create();
+
+        httpChannel.subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_3);
 
@@ -105,18 +102,18 @@ public class Step6ActivityTest {
 
         buttonClick(R.id.calculator_button_result);
 
-        latch.await();
+        testObserver.awaitCount(1);
 
         onView(withId(R.id.calculator_edit_text)).check(matches(withText("9")));
     }
 
-    @Test public void divideTest() throws InterruptedException {
+    @Test public void divideTest() {
 
         testRule.launchActivity(null);
 
-        httpChannel.subscribe(
-                        result -> latch.countDown(),
-                        err -> latch.countDown());
+        TestObserver<Response<String>> testObserver = TestObserver.create();
+
+        httpChannel.subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_8);
 
@@ -126,7 +123,7 @@ public class Step6ActivityTest {
 
         buttonClick(R.id.calculator_button_result);
 
-        latch.await();
+        testObserver.awaitCount(1);
 
         onView(withId(R.id.calculator_edit_text)).check(matches(withText("4")));
     }

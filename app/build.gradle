@@ -32,7 +32,7 @@ android {
     }
 
     applicationVariants.all { variant ->
-        buildConfigField 'String', 'BASEURL', '"https://02421ec9.ngrok.io/"'
+        buildConfigField 'String', 'BASEURL', '"https://53b9ced3.ngrok.io/"'
     }
 }
 
