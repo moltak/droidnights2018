@@ -2,7 +2,6 @@ package com.droidknights.droidtest.step5;
 
 import com.droidknights.droidtest.ViewModel;
 
-import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.Test;
 
 import io.reactivex.observers.TestObserver;
@@ -22,48 +21,48 @@ public class Step5UnitTest {
     @Test public void plusTest() {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        ((Step5ViewModel) viewModel).getHttpChannel().subscribe(testObserver);
+        ((Step5ViewModel) viewModel).getHttpStream().subscribe(testObserver);
 
         viewModel.calculate("1+1");
 
         String res = testObserver.awaitCount(1).values().get(0).body();
 
-        AssertionsForClassTypes.assertThat(res).isEqualTo("2");
+        assertThat(res).isEqualTo("2");
     }
 
     @Test public void minusTest() {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        ((Step5ViewModel) viewModel).getHttpChannel().subscribe(testObserver);
+        ((Step5ViewModel) viewModel).getHttpStream().subscribe(testObserver);
 
         viewModel.calculate("1-1");
 
         String res = testObserver.awaitCount(1).values().get(0).body();
 
-        AssertionsForClassTypes.assertThat(res).isEqualTo("0");
+        assertThat(res).isEqualTo("0");
     }
 
     @Test public void multiplyTest() {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        ((Step5ViewModel) viewModel).getHttpChannel().subscribe(testObserver);
+        ((Step5ViewModel) viewModel).getHttpStream().subscribe(testObserver);
 
         viewModel.calculate("3*2");
 
         String res = testObserver.awaitCount(1).values().get(0).body();
 
-        AssertionsForClassTypes.assertThat(res).isEqualTo("9");
+        assertThat(res).isEqualTo("9");
     }
 
     @Test public void divideTest() {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        ((Step5ViewModel) viewModel).getHttpChannel().subscribe(testObserver);
+        ((Step5ViewModel) viewModel).getHttpStream().subscribe(testObserver);
 
         viewModel.calculate("8/2");
 
         String res = testObserver.awaitCount(1).values().get(0).body();
 
-        AssertionsForClassTypes.assertThat(res).isEqualTo("4");
+        assertThat(res).isEqualTo("4");
     }
 }

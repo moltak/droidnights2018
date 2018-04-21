@@ -21,7 +21,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class Step6UnitTest {
     @Inject ViewModel viewModel;
 
-    @Inject Relay<Response<String>> httpChannel;
+    @Inject Relay<Response<String>> httpStream;
 
     @Before public void setUp() {
         DaggerStep6UnitTestComponent.builder()
@@ -33,7 +33,7 @@ public class Step6UnitTest {
     @Test public void plusTest() {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        httpChannel.subscribe(testObserver);
+        httpStream.subscribe(testObserver);
 
         viewModel.calculate("1+1");
 
@@ -45,7 +45,7 @@ public class Step6UnitTest {
     @Test public void minusTest() {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        httpChannel.subscribe(testObserver);
+        httpStream.subscribe(testObserver);
 
         viewModel.calculate("1-1");
 
@@ -57,7 +57,7 @@ public class Step6UnitTest {
     @Test public void multiplyTest() {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        httpChannel.subscribe(testObserver);
+        httpStream.subscribe(testObserver);
 
         viewModel.calculate("3*2");
 
@@ -69,7 +69,7 @@ public class Step6UnitTest {
     @Test public void divideTest() {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        httpChannel.subscribe(testObserver);
+        httpStream.subscribe(testObserver);
 
         viewModel.calculate("8/2");
 

@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 @Module
 public class Step6UnitTestModule {
     @Provides @Singleton
-    public Relay<Response<String>> provideHttpChannel() {
+    public Relay<Response<String>> provideHttpStream() {
         return PublishRelay.create();
     }
 
@@ -35,7 +35,7 @@ public class Step6UnitTestModule {
     }
 
     @Provides @Singleton
-    public ViewModel provideViewModel(Calculator calculator, Relay<Response<String>> httpChannel) {
-        return new Step6ViewModel(calculator, httpChannel);
+    public ViewModel provideViewModel(Calculator calculator, Relay<Response<String>> httpStream) {
+        return new Step6ViewModel(calculator, httpStream);
     }
 }

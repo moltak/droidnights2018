@@ -24,7 +24,7 @@ public class Step6Activity extends AppCompatActivity {
 
     @Inject ViewModel viewModel;
 
-    @Inject Relay<Response<String>> httpChannel;
+    @Inject Relay<Response<String>> httpStream;
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -57,7 +57,7 @@ public class Step6Activity extends AppCompatActivity {
         ((CalculatorApplication) getApplication()).getStep6Component().inject(this);
 
         disposable.add(
-                httpChannel.observeOn(AndroidSchedulers.mainThread())
+                httpStream.observeOn(AndroidSchedulers.mainThread())
                         .subscribe(result -> editText.setText(result.body()), Throwable::printStackTrace)
         );
     }

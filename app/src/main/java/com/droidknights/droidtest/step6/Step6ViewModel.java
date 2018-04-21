@@ -8,18 +8,18 @@ import retrofit2.Response;
 
 public class Step6ViewModel implements ViewModel {
 
-    private Relay<Response<String>> httpChannel;
+    private Relay<Response<String>> httpStream;
 
     private Calculator calculator;
 
-    public Step6ViewModel(Calculator calculator, Relay<Response<String>> httpChannel) {
+    public Step6ViewModel(Calculator calculator, Relay<Response<String>> httpStream) {
         this.calculator = calculator;
-        this.httpChannel = httpChannel;
+        this.httpStream = httpStream;
     }
 
     @Override
     public void calculate(String expression) {
         calculator.calculate(expression)
-                .subscribe(result -> httpChannel.accept(result), Throwable::printStackTrace);;
+                .subscribe(result -> httpStream.accept(result), Throwable::printStackTrace);;
     }
 }

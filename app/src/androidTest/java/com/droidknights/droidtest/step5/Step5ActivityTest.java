@@ -29,7 +29,7 @@ public class Step5ActivityTest {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
         ((Step5ViewModel) testRule.getActivity().getViewModel())
-                .getHttpChannel()
+                .getHttpStream()
                 .subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_1);
@@ -50,7 +50,7 @@ public class Step5ActivityTest {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
         ((Step5ViewModel) testRule.getActivity().getViewModel())
-                .getHttpChannel()
+                .getHttpStream()
                 .subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_1);
@@ -71,7 +71,7 @@ public class Step5ActivityTest {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
         ((Step5ViewModel) testRule.getActivity().getViewModel())
-                .getHttpChannel()
+                .getHttpStream()
                 .subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_3);
@@ -92,7 +92,7 @@ public class Step5ActivityTest {
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
         ((Step5ViewModel) testRule.getActivity().getViewModel())
-                .getHttpChannel()
+                .getHttpStream()
                 .subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_8);

@@ -45,7 +45,7 @@ public class Step5Activity extends AppCompatActivity {
         findViewById(R.id.calculator_button_result).setOnClickListener(button -> calculate());
 
         disposable.add(
-                ((Step5ViewModel)viewModel).getHttpChannel().observeOn(AndroidSchedulers.mainThread())
+                ((Step5ViewModel)viewModel).getHttpStream().observeOn(AndroidSchedulers.mainThread())
                         .subscribe(result -> editText.setText(result.body()), Throwable::printStackTrace)
         );
     }

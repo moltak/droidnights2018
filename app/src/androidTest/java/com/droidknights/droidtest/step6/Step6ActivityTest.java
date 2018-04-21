@@ -14,8 +14,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.concurrent.CountDownLatch;
-
 import javax.inject.Inject;
 
 import io.reactivex.observers.TestObserver;
@@ -32,7 +30,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 public class Step6ActivityTest {
     @Rule public ActivityTestRule<Step6Activity> testRule = new ActivityTestRule(Step6Activity.class, false, false);
 
-    @Inject Relay<Response<String>> httpChannel;
+    @Inject Relay<Response<String>> httpStream;
 
     @Before public void setUp() {
         CalculatorApplication application = (CalculatorApplication) InstrumentationRegistry.getTargetContext().getApplicationContext();
@@ -50,7 +48,7 @@ public class Step6ActivityTest {
 
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        httpChannel.subscribe(testObserver);
+        httpStream.subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_1);
 
@@ -71,7 +69,7 @@ public class Step6ActivityTest {
 
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        httpChannel.subscribe(testObserver);
+        httpStream.subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_1);
 
@@ -92,7 +90,7 @@ public class Step6ActivityTest {
 
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        httpChannel.subscribe(testObserver);
+        httpStream.subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_3);
 
@@ -113,7 +111,7 @@ public class Step6ActivityTest {
 
         TestObserver<Response<String>> testObserver = TestObserver.create();
 
-        httpChannel.subscribe(testObserver);
+        httpStream.subscribe(testObserver);
 
         buttonClick(R.id.calculator_button_8);
 

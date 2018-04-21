@@ -15,7 +15,7 @@ import retrofit2.Response;
 public class Step6Module {
 
     @Provides @Singleton
-    public Relay<Response<String>> provideHttpChannel() {
+    public Relay<Response<String>> provideHttpStream() {
         return PublishRelay.create();
     }
 
@@ -25,7 +25,7 @@ public class Step6Module {
     }
 
     @Provides @Singleton
-    public ViewModel provideViewModel(Calculator calculator, Relay<Response<String>> httpChannel) {
-        return new Step6ViewModel(calculator, httpChannel);
+    public ViewModel provideViewModel(Calculator calculator, Relay<Response<String>> httpStream) {
+        return new Step6ViewModel(calculator, httpStream);
     }
 }
