@@ -13,6 +13,11 @@ import retrofit2.Response;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+/**
+ * Step6UnitTest 에서는 mocked Calculator를 사용해 테스트합니다. Step5를 통해 테스트코드와 Calculator 간의 관계를 </br>
+ * 끊어 버렸습니다. Calculator의 모든 행동은 ViewModel이 추상화하게 됩니다. 이를 통해 우리는 테스트코드는 전혀 </br>
+ * 눈치채지 못하게 Calculator 를 mocking 해버렸고 결과적으로 아주 빠른 속도로 테스트가 수행됩니다.
+ */
 public class Step6UnitTest {
     @Inject ViewModel viewModel;
 

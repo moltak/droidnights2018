@@ -5,15 +5,15 @@ import com.droidknights.droidtest.ViewModel;
 import com.jakewharton.rxrelay2.PublishRelay;
 import com.jakewharton.rxrelay2.Relay;
 
-import java.util.Arrays;
-import java.util.List;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Single;
 import retrofit2.Response;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @Module
 public class Step6UnitTestModule {
@@ -24,42 +24,14 @@ public class Step6UnitTestModule {
 
     @Provides @Singleton
     public Calculator provideCalculator() {
-        return expression -> {
-            String symbol;
+        Calculator calculator = mock(Calculator.class);
 
-            if (expression.contains("+")) {
-                symbol = "\\+";
-            } else if (expression.contains("-")) {
-                symbol = "-";
-            } else if (expression.contains("*")) {
-                symbol = "\\*";
-            } else if (expression.contains("/")) {
-                symbol = "/";
-            } else {
-                throw new RuntimeException("Not supported symbol");
-            }
+        when(calculator.calculate("1+1")).thenReturn(Single.just(Response.success("2")));
+        when(calculator.calculate("1-1")).thenReturn(Single.just(Response.success("0")));
+        when(calculator.calculate("3*2")).thenReturn(Single.just(Response.success("9")));
+        when(calculator.calculate("8/2")).thenReturn(Single.just(Response.success("4")));
 
-            List<String> arguments = Arrays.asList(expression.split(symbol));
-            int result;
-
-            switch (symbol) {
-                case "\\+":
-                    result = Integer.valueOf(arguments.get(0)) + Integer.valueOf(arguments.get(1));
-                    break;
-                case "-":
-                    result = Integer.valueOf(arguments.get(0)) - Integer.valueOf(arguments.get(1));
-                    break;
-                case "\\*":
-                    result = (int) Math.pow(Integer.valueOf(arguments.get(0)), Integer.valueOf(arguments.get(1)));
-                    break;
-                case "/":
-                    result = Integer.valueOf(arguments.get(0)) / Integer.valueOf(arguments.get(1));
-                    break;
-                default: throw new RuntimeException("Not supported symbol");
-            }
-
-            return Single.just(Response.success(String.valueOf(result)));
-        };
+        return calculator;
     }
 
     @Provides @Singleton
